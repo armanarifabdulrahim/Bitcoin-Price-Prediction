@@ -159,7 +159,7 @@ df_plus = df_plus[len(df_plus)-window-len(test_df):]
 
 
 #Transform Test Data
-df_plus = minmax.transform(df_plus[::, None])
+df_plus = minmax.transform(df_plus)
 
 #Test data until 
 df_plus = df_plus[0:len(open_test) + window]
@@ -197,7 +197,7 @@ plt.show()
 #metrics to evaluate the performance
 
 print('Mean Absolute Percentage Error : \n', mean_absolute_percentage_error(y_test_2,predicted_price))
-print('Mean Absolute Error : \n',mean_absolute_error(y_test_2,predicted_price))
+
 
 
 
@@ -208,6 +208,8 @@ print('Mean Absolute Error : \n',mean_absolute_error(y_test_2,predicted_price))
 
 import pickle
 with open('mms.pkl','wb') as f:
-    pickle.dump(mms,f)
+    pickle.dump(minmax,)
 
 model.save('bitcoin.h5')
+
+# %%
